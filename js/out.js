@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nconsole.log('hello');\n\n//# sourceURL=webpack:///./js/app.js?");
+eval("\n\nconsole.log('hello');\n\nvar Furry = function Furry() {\n  undefined.x = 0;\n  undefined.y = 0;\n  undefined.direction = \"right\";\n};\n\nvar Coin = function Coin() {\n  undefined.x = Math.floor(Math.random() * 10);\n  undefined.y = Math.floor(Math.random() * 10);\n};\n\n//# sourceURL=webpack:///./js/app.js?");
 
 /***/ })
 
