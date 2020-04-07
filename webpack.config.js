@@ -1,26 +1,33 @@
-const path = require("path");
-const entryPath = "/";
-const entryFile = "app.js";
+var path = require('path');
 
 module.exports = {
-  entry: ["whatwg-fetch", `./${entryPath}/js/${entryFile}`],
-  output: {
-    filename: "out.js",
-    path: path.resolve(__dirname, `${entryPath}/build`)
-  },
-  devServer: {
-    contentBase: path.join(__dirname, `${entryPath}`),
-    publicPath: "/build/",
-    compress: true,
-    port: 3001
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      }
-    ]
-  }
+    entry: "./js/app.js",
+    output: {
+        filename: "out.js",
+        path: path.resolve(__dirname, 'js')
+    },
+    mode: 'development',
+    watch: true,
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }
+        ]
+    }
 };
