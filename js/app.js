@@ -21,6 +21,7 @@ class Game {
     this.furry = new Furry;
     this.coin = new Coin;
     this.score = 0;
+    this.state = true;
   }
 
   index = (x, y) => {
@@ -50,11 +51,13 @@ class Game {
       } else if (this.furry.direction === "top") {
         this.furry.y = this.furry.y - 1;
       }
-      this.gameOver()
-      this.hideVisibleFurry()
-      this.showFurry()
-      this.checkCoinCollision()
 
+      this.gameOver()
+      if (this.state) {
+        this.hideVisibleFurry()
+        this.showFurry()
+        this.checkCoinCollision()
+      }
     }, 350)
   }
 
@@ -90,7 +93,7 @@ class Game {
       clearInterval(this.idSetinterval);
       this.hideVisibleFurry();
       document.querySelector('h1').innerText = "Game Over"
-      return false;
+      this.state = false;
     }
   }
 }
