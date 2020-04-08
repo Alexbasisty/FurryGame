@@ -18,8 +18,8 @@ class Coin {
 class Game  {
   constructor() {
     this.board = document.querySelectorAll('#board div');
-    this.furry = new Furry();
-    this.coin = new Coin();
+    this.furry = new Furry;
+    this.coin = new Coin;
     this.score = 0;
   }
 
