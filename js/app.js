@@ -1,5 +1,3 @@
-console.log('hello');
-
 class Furry {
   constructor() {
     this.x = 0;
