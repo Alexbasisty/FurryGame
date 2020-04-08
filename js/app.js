@@ -53,7 +53,8 @@ class Game {
       }
       this.hideVisibleFurry()
       this.showFurry()
-    }, 1050)
+      this.checkCoinCollision()
+    }, 350)
   }
 
   turnFurry = event => {
@@ -70,6 +71,16 @@ class Game {
       case 40:
         this.furry.direction = 'down';
         break;
+    }
+  }
+
+  checkCoinCollision = () => {
+    if (this.furry.x === this.coin.x && this.furry.y === this.coin.y) {
+      document.querySelector('.coin').classList.remove('coin');
+      this.score = this.score + 1;
+      document.querySelector('#score strong').innerText = this.score
+      this.coin = new Coin;
+      this.showCoin()
     }
   }
 }
