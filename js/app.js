@@ -29,7 +29,6 @@ class Game {
 
   hideVisibleFurry = () => {
     document.querySelector('.furry').classList.remove('furry');
-
   }
 
   showFurry = () => {
@@ -51,9 +50,11 @@ class Game {
       } else if (this.furry.direction === "top") {
         this.furry.y = this.furry.y - 1;
       }
+      this.gameOver()
       this.hideVisibleFurry()
       this.showFurry()
       this.checkCoinCollision()
+
     }, 350)
   }
 
@@ -81,6 +82,15 @@ class Game {
       document.querySelector('#score strong').innerText = this.score
       this.coin = new Coin;
       this.showCoin()
+    }
+  }
+
+  gameOver = () => {
+    if(this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9) {
+      clearInterval(this.idSetinterval);
+      this.hideVisibleFurry();
+      document.querySelector('h1').innerText = "Game Over"
+      return false;
     }
   }
 }
